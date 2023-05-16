@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Reports</t,itle>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <link rel="stylesheet" href="/stylesheets/assignmentsStyle.css">
+
+</head>
+<body>
+    <%- include ('partials/navbar')%>
+
+    <div class = "container">
+        <div class = "section" id = "list">
+            <h1>Your Reports:</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Service Name</th>
+                        <th>Error Type</th>
+                        <th>Status</th>
+                        <th>Creation Date</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Homework Manager</th>
+                        <th>Website Not Loading</th>
+                        <th>Unresolved</th>
+                        <th>5/16/2023</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="section" id="add">
+            <h2>Create a New Report:</h2>
+            <form id="addForm" method = "post" action="/">
+                <div class = "row">
+                    <div class = "input-field col s8">
+                        <input type="text" id = "serviceInput" name = "service" class="validate" data-length="32" required>
+                        <label for="serviceInput">Which service is having issues?</label>
+                    </div>
+
+                    <div class = "input-field col s8">
+                        <input type="text" id = "errorInput" name = "error" class="validate" data-length="32" required>
+                        <label for="errorInput">What error are you experiencing?</label>
+                    </div>
+
+                    <div class = "input-field col s8">
+                        <input type="text" id = "detailInput" name = "detail" class="validate" data-length="32" required>
+                        <label for="detailInput">Please describe your error and any other relevant details:</label>
+                    </div>
+                </div>
+                <button class="btn waves-effect waves-light" type="submit">
+                    <i class="material-icons right">send</i>
+                    Submit
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script src="/scripts/materializeAutoInit.js"></script>
+
+</body>
+</html>
