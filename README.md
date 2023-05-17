@@ -1,2 +1,2 @@
-# WebApps_Final_BugTracker
-Allows users to report, and employees to handle bugs.
+# WebApps_Final_ApplicationTracker
+Helps users keep track of their applications for colleges, summer camps, etc.
