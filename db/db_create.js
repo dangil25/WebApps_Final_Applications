@@ -1,39 +1,43 @@
 const db = require("./db_connection");
 
-const drop_reports_table_sql = "DROP TABLE IF EXISTS reportds;"
+const drop_applications_table_sql = "DROP TABLE IF EXISTS applications;"
 
-db.execute(drop_reports_table_sql);
+db.execute(drop_applications_table_sql);
 
-const drop_services_table_sql = "DROP TABLE IF EXISTS services;"
+const drop_category_table_sql = "DROP TABLE IF EXISTS category;"
 
-db.execute(drop_services_table_sql);
+db.execute(drop_category_table_sql);
 
-
-const create_types_table_sql = `
-    CREATE TABLE services (
-        typeId INT NOT NULL AUTO_INCREMENT,
-        typeName VARCHAR(45) NOT NULL,
+const create_category_table_sql = `
+    CREATE TABLE category (
+        categoryId INT NOT NULL AUTO_INCREMENT,
+        categoryName VARCHAR(45) NOT NULL,
         userId VARCHAR(255) NULL,
         PRIMARY KEY (typeId));
 `
-db.execute(create_services_table_sql);
+db.execute(create_category_table_sql);
 
-const create_reports_table_sql = `
-    CREATE TABLE reports (
-        reportId INT NOT NULL AUTO_INCREMENT,
-        reportName VARCHAR(45) NOT NULL,
+const create_applications_table_sql = `
+    CREATE TABLE applications (
+        applicationId INT NOT NULL AUTO_INCREMENT,
+        applicationName VARCHAR(45) NOT NULL,
+        categoryId INT NOT NULL,
         priority INT NULL,
-        handlerId INT NOT NULL,
-        createDate DATE NULL,
+        status INT NULL,
+        dueDate DATE NULL,
         description VARCHAR(150) NULL,
+        essaySubmitted INT NULL,
+        recRequest INT NULL,
+        transcriptRequest INT NULL,
+        notes VARCHAR(150) NULL,
         userId VARCHAR(255) NULL,
-        PRIMARY KEY (assignmentId),
-        INDEX assignmentSubject_idx (subjectId ASC),
-        CONSTRAINT assignmentSubject
-            FOREIGN KEY (subjectId)
-            REFERENCES subjects (subjectId)
+        PRIMARY KEY (applicationId),
+        CONSTRAINT main
+            FOREIGN KEY (categoryid)
+            REFERENCES category (id)
             ON DELETE RESTRICT
-            ON UPDATE CASCADE);
+            ON UPDATE CASCADE
+    );
 `
 
 db.execute(create_reports_table_sql);
