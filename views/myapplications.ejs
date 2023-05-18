@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Applications</t,itle>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <link rel="stylesheet" href="/stylesheets/assignmentsStyle.css">
+
+</head>
+<body>
+    <%- include ('partials/navbar')%> 
+
+    <div class = "container">
+        <div class = "section" id = "list">
+            <h1>Your Applications:</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Priority</th>
+                        <th>Application Title</th>
+                        <th>Category</th>
+                        <th>Due Date</th>
+                        <th>Notes</th>
+                        <th>Final Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Highest</th>
+                        <th>Harvard</th>
+                        <th>Ivy League</th>
+                        <th>1/1/2023</th>
+                        <th>I FREAKING LOVE THIS SCHOOL I NEED TO GET IN</th>
+                        <th>Unsubmitted</th>
+                        <td>
+                            <a class="btn-small waves-effect waves-light" href="/assignments/application">
+                                <i class="material-icons right">edit</i>
+                                Info/Edit
+                            </a>
+                            <a class="btn-small waves-effect waves-light red" href="/assignments/application">
+                                <i class="material-icons right">delete</i>
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section" id="addApplication">
+            <h3>Add an application:</h3>
+            <form id="addForm" method="post" action="/applications">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <label for="taskNameInput">Application Title:</label>
+                        <input type="text" name="taskName" id="taskNameInput" class="validate" data-length="32" required>
+                    </div>
+                    <div class="input-field col s6">
+                        <select id="categoryInput" name="category" required>
+                            <option value="" disabled selected>Choose your category</option>
+                            <option value="1" disabled selected>College</option>
+                            <option value="2" disabled selected>Internship</option>
+                            <option value="3" disabled selected>Summer Program</option>
+                            <!-- <% for (let i = 0; i < categorylist.length; i++) { %>
+                                <option value=<%=categorylist[i].categoryId %>><%= categorylist[i].categoryName %></option>
+                            <% } %> -->
+                        </select>
+                        <label for="categoryInput">Category:</label>
+                    </div>
+                    
+                </div>    
+                
+                <div class="row">
+                    <div class="input-field col s6">
+                        <label for="notesInput">Notes</label>
+                        <input type="text" name="notes" id="notesInput" placeholder="Enter your notes here" class="validate" data-length="32" required>
+                    </div>
+                    <div class="input-field col s6">
+                        Due Date:
+                        <div class="input-field inline">
+                            <input type="date" name="taskDate" id="dateInput" class="validate" data-length="32">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <select id="priorityInput" name="priority" required>
+                            <option value="" selected>Choose your priority</option>
+                            <option value="1" disabled>Lowest</option>
+                            <option value="2" disabled>Medium</option>
+                            <option value="3" disabled>Highest</option>
+                            <!-- <% for (let i = 0; i < categorylist.length; i++) { %>
+                                <option value=<%=categorylist[i].categoryId %>><%= categorylist[i].categoryName %></option>
+                            <% } %> -->
+                        </select>
+                        <label for="categoryInput">Priority:</label>
+                    </div>    
+                </div>
+                <button class="btn waves-effect waves-light" type="submit" onclick="M.toast({html: 'Task added!'})">
+                    <i class="material-icons right">done</i>
+                    Submit
+                </button>
+            </form>
+        </div>
+        
+
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script src="/scripts/materializeAutoInit.js"></script>
+
+</body>
+</html>

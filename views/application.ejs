@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Applications</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+        <link rel="stylesheet" href="/stylesheets/assignmentsStyle.css">
+    
+    </head>
+<body>
+    <%- include ('partials/navbar')%>
+
+    <div class = "container">
+        <div class = "section flow-text" id="details">
+            <h1>Application Details:</h1>
+            
+            <div class = "flow-text">
+                <a class="btn-small waves-effect waves-light flow-text" href = "/">
+                    <i class = "materials-icons left">arrow_back_ios</i>
+                    Return to your applications
+                </a>
+            </div>
+
+            <table>
+                <tr>
+                    <th>Status</th>
+                    <td>Unsubmitted</td>
+                </tr>
+                <tr>
+                    <th>Application title: </th>
+                    <td>Harvard</td>
+                </tr>
+                <tr>
+                    <th>Category</th>
+                    <td>Ivy League</td>
+                </tr>
+                <tr>
+                    <th>Due Date </th>
+                    <td>1/1/2023</td>
+                </tr>
+                <tr>
+                    <th>Notes</th>
+                    <td>I FREAKING LOVE THIS SCHOOL I NEED TO GET IN</th>
+
+                </tr>
+            </table>
+        </div>
+
+        <div class="section" id="controls">
+            <a class="btn-large waves-effect waves-light orange left modal-trigger" href="#edit">
+                <i class="material-icons right">edit</i>
+                Edit
+            </a>
+            <a class="btn-large waves-effect waves-light red right" href="/myapplications/delete">
+                <i class="material-icons right">delete</i>
+                Delete
+            </a>
+        </div>
+
+        <div class="modal" id="edit">
+
+            <div class="modal-content">
+
+                <h2>Edit application:</h2>
+                <form id="updateForm" method="post" action="/myapplications/application">
+                    <div class="row">
+                        <div class="input-field col s8">
+                            <input type="text" id="titleInput" name="title" class="validate" data-length="32" required value=<%= hw.title %>>
+                            <label for="titleInput">Application title:</label>
+                        </div>
+                        <div class="input-field col s4">
+                            <select id="categoryInput" name="category" required>
+                                <option value="" disabled>Choose your category</option>
+                                <option value="1" disabled>College</option>
+                                <option value="2" disabled>Internship</option>
+                                <option value="3" disabled>Summer Program</option>
+                                <option value="4" selected>Ivy League</option>
+                                <!-- <% for (let i = 0; i < categorylist.length; i++) { %>
+                                    <option value=<%=categorylist[i].categoryId %>><%= categorylist[i].categoryName %></option>
+                                <% } %> -->
+                            </select>
+                            <label for="categoryInput">Category:</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <select id="priorityInput" name="priority" required>
+                                <option value="">Choose your priority</option>
+                                <option value="1">Lowest</option>
+                                <option value="2">Medium</option>
+                                <option value="3" selected>Highest</option>
+                              </select>
+                              <label for="priorityInput">Priority:</label>
+                        </div>
+    
+                        <div class="input-field col s6">
+                            <input type="date" id="dueDateInput" name="dueDate" value=2023-01-01>  <!-- Note that the date value format is "yyyy-mm-dd" -->
+                            <label for="dueDateInput">Due Date:</label>
+                        </div>
+
+                        <div class="input-field col s12">
+                            <textarea class="materialize-textarea" id="descriptionInput" name="description">I FREAKING LOVE THIS SCHOOL I NEED TO GET IN</textarea>
+                            <label for="descriptionInput">Notes:</label>
+                        </div>
+
+                        <div class = "input-field col s12">
+                            <select id = "statusInput" name="status" required>
+                                <option value="1">Unsubmitted</option>
+                                <option value="2">Submitted</option>
+                            </select>
+
+                        </div>
+    
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button class="btn waves-effect waves-light " type="submit" form="updateForm">
+                        <i class="material-icons right">send</i>
+                        Submit
+                    </button>
+                    <button class="modal-close waves-effect waves-green btn-flat" >Never Mind</button>
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

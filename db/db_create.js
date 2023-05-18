@@ -8,6 +8,10 @@ const drop_category_table_sql = "DROP TABLE IF EXISTS category;"
 
 db.execute(drop_category_table_sql);
 
+const drop_priority_table_sql = "DROP TABLE IF EXISTS priority;"
+
+db.execute(drop_priority_table_sql);
+
 const create_category_table_sql = `
     CREATE TABLE category (
         categoryId INT NOT NULL AUTO_INCREMENT,
@@ -17,19 +21,29 @@ const create_category_table_sql = `
 `
 db.execute(create_category_table_sql);
 
+const create_priority_table_sql = `
+    CREATE TABLE priority (
+        priorityId INT NOT ULL AUTO_INCREMENT,
+        priorityName VARCHAR(45) NOT NULL,
+        PRIMARY KEY (typeID)
+    );
+    
+`
+db.execute(create_priority_table_sql);
+
 const create_applications_table_sql = `
     CREATE TABLE applications (
+        priority INT NULL,
         applicationId INT NOT NULL AUTO_INCREMENT,
         applicationName VARCHAR(45) NOT NULL,
         categoryId INT NOT NULL,
-        priority INT NULL,
-        status INT NULL,
-        dueDate DATE NULL,
-        description VARCHAR(150) NULL,
         essaySubmitted INT NULL,
         recRequest INT NULL,
         transcriptRequest INT NULL,
+        dueDate DATE NULL,
         notes VARCHAR(150) NULL,
+        status INT NULL,
+        
         userId VARCHAR(255) NULL,
         PRIMARY KEY (applicationId),
         CONSTRAINT main
@@ -40,6 +54,6 @@ const create_applications_table_sql = `
     );
 `
 
-db.execute(create_reports_table_sql);
+db.execute(create_applications_table_sql);
 
 db.end();
