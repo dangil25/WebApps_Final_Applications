@@ -41,9 +41,15 @@ app.get('/profile', requiresAuth(), (req, res) => {
     res.send(JSON.stringify(req.oidc.user));
 });
 
-//Index sends straight to require router
-let myreportsRouter = require("./routes/assignments.js");
-app.use("/", requiresAuth(), assignmentsRouter);
+app.get('/', requiresAuth(), (req, res) =>{
+    console.log("GET /");
+    res.render("myapplications");
+});
+
+app.get('/myapplication/application', requiresAuth(), (req, res) =>{
+    console.log("GET /");
+    res.render("application");
+});
 
 
 
