@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Applications</t,itle>
+    <title>My Applications</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-    <link rel="stylesheet" href="/stylesheets/assignmentsStyle.css">
+    <link rel="stylesheet" href="/stylesheets/applicationsStyle.css">
 
 </head>
-<body>
-    <%- include ('partials/navbar')%> 
+<tbody>
+    <%- include ('partials/navbar')%>
 
     <div class = "container">
         <div class = "section" id = "list">
@@ -38,11 +38,11 @@
                         <th>I FREAKING LOVE THIS SCHOOL I NEED TO GET IN</th>
                         <th>Unsubmitted</th>
                         <td>
-                            <a class="btn-small waves-effect waves-light" href="/assignments/application">
+                            <a class="btn-small waves-effect waves-light" href="/application">
                                 <i class="material-icons right">edit</i>
                                 Info/Edit
                             </a>
-                            <a class="btn-small waves-effect waves-light red" href="/assignments/application">
+                            <a class="btn-small waves-effect waves-light red" href="/">
                                 <i class="material-icons right">delete</i>
                                 Delete
                             </a>
@@ -57,18 +57,16 @@
             <form id="addForm" method="post" action="/applications">
                 <div class="row">
                     <div class="input-field col s6">
-                        <label for="taskNameInput">Application Title:</label>
-                        <input type="text" name="taskName" id="taskNameInput" class="validate" data-length="32" required>
+                        <label for="appNameInput">Application Title:</label>
+                        <input type="text" name="appName" id="appNameInput" class="validate" data-length="32" required>
                     </div>
                     <div class="input-field col s6">
                         <select id="categoryInput" name="category" required>
                             <option value="" disabled selected>Choose your category</option>
-                            <option value="1" disabled selected>College</option>
-                            <option value="2" disabled selected>Internship</option>
-                            <option value="3" disabled selected>Summer Program</option>
-                            <!-- <% for (let i = 0; i < categorylist.length; i++) { %>
-                                <option value=<%=categorylist[i].categoryId %>><%= categorylist[i].categoryName %></option>
-                            <% } %> -->
+                            <option value="1" >College</option>
+                            <option value="2" >Internship</option>
+                            <option value="3" >Summer Program</option>
+                            <option value="4" >Ivy League</option>
                         </select>
                         <label for="categoryInput">Category:</label>
                     </div>
@@ -83,20 +81,18 @@
                     <div class="input-field col s6">
                         Due Date:
                         <div class="input-field inline">
-                            <input type="date" name="taskDate" id="dateInput" class="validate" data-length="32">
+                            <input type="date" name="appDate" id="dateInput" class="validate" data-length="32">
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
                         <select id="priorityInput" name="priority" required>
-                            <option value="" selected>Choose your priority</option>
-                            <option value="1" disabled>Lowest</option>
-                            <option value="2" disabled>Medium</option>
-                            <option value="3" disabled>Highest</option>
-                            <!-- <% for (let i = 0; i < categorylist.length; i++) { %>
-                                <option value=<%=categorylist[i].categoryId %>><%= categorylist[i].categoryName %></option>
-                            <% } %> -->
+                            <option value="" disabled selected>Choose your priority</option>
+                            <option value="1" >Lowest</option>
+                            <option value="2" >Medium</option>
+                            <option value="3" >Highest</option>
+                            
                         </select>
                         <label for="categoryInput">Priority:</label>
                     </div>    
@@ -115,5 +111,5 @@
 
     <script src="/scripts/materializeAutoInit.js"></script>
 
-</body>
+</tbody>
 </html>

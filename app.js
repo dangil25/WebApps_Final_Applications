@@ -1,4 +1,4 @@
-https://prod.liveshare.vsengsaas.visualstudio.com/join?6EF41A5361C6980E87D694C540F04777DF3B
+
 const express = require( "express" );
 const logger = require("morgan");
 const path = require("path");
@@ -9,7 +9,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 const db = require('./db/db_connection');
 const app = express();
-const port = 3000;
+const port = 8080;
 
 app.set( "views",  path.join(__dirname , "views"));
 app.set( "view engine", "ejs" );
@@ -38,23 +38,35 @@ app.get('/authtest', (req, res) => {
     res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
 });
 
-app.get('/profile', requiresAuth(), (req, res) => {
+app.get('/profile', (req, res) => {
     res.send(JSON.stringify(req.oidc.user));
 });
 
-app.get('/', requiresAuth(), (req, res) =>{
+app.get('/', (req, res) =>{
     console.log("GET /");
+    res.redirect("/myapplications");
+});
+
+app.get('/myapplications', (req, res) =>{
+    console.log("GET /myapplications");
     res.render("myapplications");
 });
 
-app.get('/myapplication/application', requiresAuth(), (req, res) =>{
-    console.log("GET /");
+app.get('/application', (req, res) =>{
+    console.log("GET /application");
     res.render("application");
+});
+
+app.get('/categories', (req, res) =>{
+    console.log("GET /categories");
+    res.render("managecategories");
 });
 
 
 
-
+app.listen( port, () => {
+    console.log(`App server listening on ${ port }. (Go to http://localhost:${ port })` );
+} );
 
 // Immediately redirect Index to myreports
 

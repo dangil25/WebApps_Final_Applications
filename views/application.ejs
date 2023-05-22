@@ -5,13 +5,16 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Applications</title>
+        
+        <!-- Compiled and minified CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    
-        <link rel="stylesheet" href="/stylesheets/assignmentsStyle.css">
-    
+
+        <link rel="stylesheet" href="/stylesheets/applicationsStyle.css">
+        
     </head>
-<body>
+<tbody>
     <%- include ('partials/navbar')%>
 
     <div class = "container">
@@ -19,8 +22,8 @@
             <h1>Application Details:</h1>
             
             <div class = "flow-text">
-                <a class="btn-small waves-effect waves-light flow-text" href = "/">
-                    <i class = "materials-icons left">arrow_back_ios</i>
+                <a class="btn-small waves-effect waves-light flow-text" href="/myapplications">
+                    <i class = "material-icons left">arrow_back</i>
                     Return to your applications
                 </a>
             </div>
@@ -44,7 +47,7 @@
                 </tr>
                 <tr>
                     <th>Notes</th>
-                    <td>I FREAKING LOVE THIS SCHOOL I NEED TO GET IN</th>
+                    <td></th>
 
                 </tr>
             </table>
@@ -55,7 +58,7 @@
                 <i class="material-icons right">edit</i>
                 Edit
             </a>
-            <a class="btn-large waves-effect waves-light red right" href="/myapplications/delete">
+            <a class="btn-large waves-effect waves-light red right" href="/myapplications">
                 <i class="material-icons right">delete</i>
                 Delete
             </a>
@@ -69,7 +72,7 @@
                 <form id="updateForm" method="post" action="/myapplications/application">
                     <div class="row">
                         <div class="input-field col s8">
-                            <input type="text" id="titleInput" name="title" class="validate" data-length="32" required value=<%= hw.title %>>
+                            <input type="text" id="titleInput" name="title" class="validate" data-length="32" required value="a">
                             <label for="titleInput">Application title:</label>
                         </div>
                         <div class="input-field col s4">
@@ -79,9 +82,7 @@
                                 <option value="2" disabled>Internship</option>
                                 <option value="3" disabled>Summer Program</option>
                                 <option value="4" selected>Ivy League</option>
-                                <!-- <% for (let i = 0; i < categorylist.length; i++) { %>
-                                    <option value=<%=categorylist[i].categoryId %>><%= categorylist[i].categoryName %></option>
-                                <% } %> -->
+                               
                             </select>
                             <label for="categoryInput">Category:</label>
                         </div>
@@ -127,5 +128,12 @@
 
         </div>
     </div>
-</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!-- initialize Materialize elements -->
+<script> M.AutoInit();</script>
+
+<script src="/scripts/materializeAutoinit.js"></script>
+</tbody>
 </html>
