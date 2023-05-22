@@ -18,24 +18,16 @@
     <%- include ('partials/navbar')%>
 
     <div class = "container">
-        <div class = "section flow-text" id="details">
-            <h1>Application Details:</h1>
+        <h4>Application Details: Harvard</h4>
+        <h5>Priority: High</h5>
             
-            <div class = "flow-text">
-                <a class="btn-small waves-effect waves-light flow-text" href="/myapplications">
-                    <i class = "material-icons left">arrow_back</i>
-                    Return to your applications
-                </a>
-            </div>
+            
+            
 
             <table>
                 <tr>
                     <th>Status</th>
                     <td>Unsubmitted</td>
-                </tr>
-                <tr>
-                    <th>Application title: </th>
-                    <td>Harvard</td>
                 </tr>
                 <tr>
                     <th>Category</th>
@@ -47,18 +39,17 @@
                 </tr>
                 <tr>
                     <th>Notes</th>
-                    <td></th>
+                    <td>Very Competetive</td>
 
                 </tr>
             </table>
-        </div>
 
         <div class="section" id="controls">
             <a class="btn-large waves-effect waves-light orange left modal-trigger" href="#edit">
                 <i class="material-icons right">edit</i>
                 Edit
             </a>
-            <a class="btn-large waves-effect waves-light red right" href="/myapplications">
+            <a class="btn-large waves-effect waves-light red right" href="/">
                 <i class="material-icons right">delete</i>
                 Delete
             </a>
@@ -69,10 +60,10 @@
             <div class="modal-content">
 
                 <h2>Edit application:</h2>
-                <form id="updateForm" method="post" action="/myapplications/application">
+                <form id="updateForm" method="get" action="/application">
                     <div class="row">
                         <div class="input-field col s8">
-                            <input type="text" id="titleInput" name="title" class="validate" data-length="32" required value="a">
+                            <input type="text" id="titleInput" name="title" class="validate" data-length="32" required value="Harvard">
                             <label for="titleInput">Application title:</label>
                         </div>
                         <div class="input-field col s4">
@@ -102,7 +93,7 @@
                         </div>
 
                         <div class="input-field col s12">
-                            <textarea class="materialize-textarea" id="descriptionInput" name="description">I FREAKING LOVE THIS SCHOOL I NEED TO GET IN</textarea>
+                            <textarea class="materialize-textarea" id="descriptionInput" name="description">Very Competetive</textarea>
                             <label for="descriptionInput">Notes:</label>
                         </div>
 
@@ -111,6 +102,7 @@
                                 <option value="1">Unsubmitted</option>
                                 <option value="2">Submitted</option>
                             </select>
+                            <label for="statusInput">Status:</label>
 
                         </div>
     
@@ -127,7 +119,9 @@
             </div>
 
         </div>
+        
     </div>
+    
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 

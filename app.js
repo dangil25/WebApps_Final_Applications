@@ -18,7 +18,7 @@ app.use(logger("dev"));
 app.use(express.static(path.join(__dirname, 'public') ));
 
 const config = {
-    authRequired: false,
+    authRequired: true,
     auth0Logout: true,
     secret: process.env.AUTH0_SECRET,
     baseURL: process.env.AUTH0_BASE_URL,

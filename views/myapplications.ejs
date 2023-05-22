@@ -16,27 +16,27 @@
 
     <div class = "container">
         <div class = "section" id = "list">
-            <h1>Your Applications:</h1>
+            <h3>Your Applications:</h3>
             <table>
                 <thead>
                     <tr>
                         <th>Priority</th>
-                        <th>Application Title</th>
+                        <th>Title</th>
                         <th>Category</th>
                         <th>Due Date</th>
                         <th>Notes</th>
                         <th>Final Status</th>
-                        <th></th>
+                        <td></td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <th>Highest</th>
-                        <th>Harvard</th>
-                        <th>Ivy League</th>
-                        <th>1/1/2023</th>
-                        <th>I FREAKING LOVE THIS SCHOOL I NEED TO GET IN</th>
-                        <th>Unsubmitted</th>
+                        <td>Highest</td>
+                        <td>Harvard</td>
+                        <td>Ivy League</td>
+                        <td>1/1/2023</td>
+                        <td>Very Competetive</td>
+                        <td>Unsubmitted</td>
                         <td>
                             <a class="btn-small waves-effect waves-light" href="/application">
                                 <i class="material-icons right">edit</i>
@@ -53,8 +53,8 @@
         </div>
 
         <div class="section" id="addApplication">
-            <h3>Add an application:</h3>
-            <form id="addForm" method="post" action="/applications">
+            <h5>Add an application:</h5>
+            <form id="addForm" method="get" action="/applications">
                 <div class="row">
                     <div class="input-field col s6">
                         <label for="appNameInput">Application Title:</label>
