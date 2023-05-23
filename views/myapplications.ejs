@@ -42,7 +42,7 @@
                                 <i class="material-icons right">edit</i>
                                 Info/Edit
                             </a>
-                            <a class="btn-small waves-effect waves-light red" href="/">
+                            <a class="btn-small waves-effect waves-light red" href="/myapplications">
                                 <i class="material-icons right">delete</i>
                                 Delete
                             </a>
@@ -54,11 +54,11 @@
 
         <div class="section" id="addApplication">
             <h5>Add an application:</h5>
-            <form id="addForm" method="get" action="/applications">
+            <form id="addForm" method="get" action="/application">
                 <div class="row">
                     <div class="input-field col s6">
-                        <label for="appNameInput">Application Title:</label>
-                        <input type="text" name="appName" id="appNameInput" class="validate" data-length="32" required>
+                        <input type="text" name="appName" id="appNameInput" class="validate" data-length="32" placeholder = "Application Title:" required>
+                        <label for="appNameInput">Title:</label>
                     </div>
                     <div class="input-field col s6">
                         <select id="categoryInput" name="category" required>
@@ -84,8 +84,6 @@
                             <input type="date" name="appDate" id="dateInput" class="validate" data-length="32">
                         </div>
                     </div>
-                </div>
-                <div class="row">
                     <div class="input-field col s6">
                         <select id="priorityInput" name="priority" required>
                             <option value="" disabled selected>Choose your priority</option>
@@ -95,7 +93,10 @@
                             
                         </select>
                         <label for="categoryInput">Priority:</label>
-                    </div>    
+                    </div>  
+                </div>
+                <div class="row">
+                      
                 </div>
                 <button class="btn waves-effect waves-light" type="submit" onclick="M.toast({html: 'Task added!'})">
                     <i class="material-icons right">done</i>

@@ -18,7 +18,7 @@ app.use(logger("dev"));
 app.use(express.static(path.join(__dirname, 'public') ));
 
 const config = {
-    authRequired: true,
+    authRequired: false,
     auth0Logout: true,
     secret: process.env.AUTH0_SECRET,
     baseURL: process.env.AUTH0_BASE_URL,
@@ -44,20 +44,20 @@ app.get('/profile', (req, res) => {
 
 app.get('/', (req, res) =>{
     console.log("GET /");
-    res.redirect("/myapplications");
+    res.render("index");
 });
 
-app.get('/myapplications', (req, res) =>{
+app.get('/myapplications', requiresAuth(), (req, res) =>{
     console.log("GET /myapplications");
     res.render("myapplications");
 });
 
-app.get('/application', (req, res) =>{
+app.get('/application', requiresAuth(), (req, res) =>{
     console.log("GET /application");
     res.render("application");
 });
 
-app.get('/categories', (req, res) =>{
+app.get('/categories', requiresAuth(), (req, res) =>{
     console.log("GET /categories");
     res.render("managecategories");
 });

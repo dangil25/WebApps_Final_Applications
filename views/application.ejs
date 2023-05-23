@@ -19,10 +19,14 @@
 
     <div class = "container">
         <h4>Application Details: Harvard</h4>
+        <div class = "flow-text">
+            <a class="btn-small waves-effect waves-light flow-text" href="/myapplications">
+                <i class="material-icons left">arrow_back_ios</i>
+                Return to your Applications
+            </a>
+        </div>
+        
         <h5>Priority: High</h5>
-            
-            
-            
 
             <table>
                 <tr>
@@ -39,17 +43,29 @@
                 </tr>
                 <tr>
                     <th>Notes</th>
-                    <td>Very Competetive</td>
-
+                    <td>Very Competitive</td>
                 </tr>
-            </table>
+                <tr>
+                    <th>Transcript</th>
+                    <td>Requested</td>
+                </tr>
+                <tr>
+                    <th>Recommendation</th>
+                    <td>Requested</td>
+                </tr>
+                <tr>
+                    <th>Essays</th>
+                    <td>In Progress</td>
+                </tr>
+        
+        </table>
 
         <div class="section" id="controls">
             <a class="btn-large waves-effect waves-light orange left modal-trigger" href="#edit">
                 <i class="material-icons right">edit</i>
                 Edit
             </a>
-            <a class="btn-large waves-effect waves-light red right" href="/">
+            <a class="btn-large waves-effect waves-light red right" href="/myapplications">
                 <i class="material-icons right">delete</i>
                 Delete
             </a>
@@ -77,7 +93,9 @@
                             </select>
                             <label for="categoryInput">Category:</label>
                         </div>
-                        <div class="input-field col s6">
+                    </div>
+                    <div class = "row">
+                        <div class="input-field col s8">
                             <select id="priorityInput" name="priority" required>
                                 <option value="">Choose your priority</option>
                                 <option value="1">Lowest</option>
@@ -86,25 +104,55 @@
                               </select>
                               <label for="priorityInput">Priority:</label>
                         </div>
-    
-                        <div class="input-field col s6">
-                            <input type="date" id="dueDateInput" name="dueDate" value=2023-01-01>  <!-- Note that the date value format is "yyyy-mm-dd" -->
-                            <label for="dueDateInput">Due Date:</label>
-                        </div>
-
-                        <div class="input-field col s12">
-                            <textarea class="materialize-textarea" id="descriptionInput" name="description">Very Competetive</textarea>
-                            <label for="descriptionInput">Notes:</label>
-                        </div>
-
-                        <div class = "input-field col s12">
+                        <div class = "input-field col s4">
                             <select id = "statusInput" name="status" required>
                                 <option value="1">Unsubmitted</option>
                                 <option value="2">Submitted</option>
                             </select>
                             <label for="statusInput">Status:</label>
-
                         </div>
+    
+                        
+                    </div>
+                    <div class = "row">
+
+                        <div class="input-field col s8">
+                            <textarea class="materialize-textarea" id="descriptionInput" name="description">Very Competitive</textarea>
+                            <label for="descriptionInput">Notes:</label>
+                        </div>
+                        <div class="input-field col s4">
+                            <input type="date" id="dueDateInput" name="dueDate" value=2023-01-01>  <!-- Note that the date value format is "yyyy-mm-dd" -->
+                            <label for="dueDateInput">Due Date:</label>
+                        </div>
+                    </div>
+                    <div class = "row">
+
+                        
+                        <div class = "input-field col s4">
+                            <select id = "recommendationsInput" name="recommendations" required>
+                                <option value="0">Need to Request</option>
+                                <option value="1" selected>Requested</option>
+                                <option value="2">Recieved</option>
+                            </select>
+                            <label for="recommendationsInput">Recommendations:</label>
+                        </div>
+                        <div class = "input-field col s4">
+                            <select id = "transcriptInput" name="transcript" required>
+                                <option value="0">Need to Request</option>
+                                <option value="1" selected>Requested</option>
+                                <option value="2">Recieved</option>
+                            </select>
+                            <label for="transcriptInput">Transcript:</label>
+                        </div>
+                        <div class = "input-field col s4">
+                            <select id = "essayInput" name="essay" required>
+                                <option value="0">Unstarted</option>
+                                <option value="1" selected>In Progress</option>
+                                <option value="2">Submitted</option>
+                            </select>
+                            <label for="essayInput">Essay:</label>
+                        </div>
+                        
     
                     </div>
                 </form>
