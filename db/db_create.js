@@ -50,7 +50,8 @@ const create_applications_table_sql = `
             FOREIGN KEY (categoryid)
             REFERENCES category (id)
             ON DELETE RESTRICT
-            ON UPDATE CASCADE
+            ON UPDATE CASCADE,
+        
         CONSTRAINT two
             FOREIGN KEY (priorityid)
             REFERENCES priority (id)
