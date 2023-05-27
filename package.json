@@ -1,0 +1,23 @@
+{
+  "name": "webapps_final_applications",
+  "version": "1.0.0",
+  "description": "Helps users keep track of their applications for colleges, summer camps, etc.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dangil25/WebApps_Final_Applications.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dangil25/WebApps_Final_Applications/issues"
+  },
+  "homepage": "https://github.com/dangil25/WebApps_Final_Applications#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql2": "^3.3.2"
+  }
+}
