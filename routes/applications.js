@@ -38,3 +38,4 @@ applicationsRouter.get("/:id", ( req, res ) => {
         }
     });    
 });
+
