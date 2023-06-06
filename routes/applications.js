@@ -6,7 +6,6 @@ const path = require("path");
 
 let applicationsRouter = express.Router();
 
-
 const read_applications_all_sql = fs.readFileSync(path.join(__dirname, "..", "db", "queries", "crud", "read_applications_all.sql"), {encoding: "UTF-8"});
 
 applicationsRouter.get("/", ( req, res ) => {
@@ -16,7 +15,7 @@ applicationsRouter.get("/", ( req, res ) => {
         if (error)
             res.status(500).send(error); //Internal Server Error
         else {
-            res.send(results);
+            res.render('applications', results);
         }
     });    
 });
@@ -39,3 +38,4 @@ applicationsRouter.get("/:id", ( req, res ) => {
     });    
 });
 
+module.exports = applicationsRouter;
