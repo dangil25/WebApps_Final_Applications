@@ -7,7 +7,10 @@ const path = require("path");
 let categoriesRouter = express.Router();
 
 
-app.get('/categories', requiresAuth(), (req, res) =>{
+categoriesRouter.get('/categories', (req, res) =>{
     console.log("GET /categories");
     res.render("managecategories");
 });
+
+
+module.exports = categoriesRouter; 
