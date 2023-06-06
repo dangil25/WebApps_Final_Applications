@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Applications</title>
+    
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="/stylesheets/stuffStyle.css">
+    
+    </head>
+<tbody>
+    <%- include ('partials/navbar')%>
+
+    <!--
+        appplicationId, applicationName,
+    categoryName, applications.categoryId as categoryId,
+    priorityName, applications.priorityId as priorityId,
+    essaySubmitted, recRequest, transcriptRequest,
+    DATE_FORMAT(dueDate, "%m/%d/%y (%W)") AS dueDateClean,
+    DATE_FORMAT(dueDate, "%Y-%m-%d") AS dueDateForms,
+    notes, status
+    -->
+
+    <div class = "container">
+        <div class="section flow-text" id="header">
+            <h1><%= inventory.applicationName %></h1>
+            <table class="responsive-table">
+                <tr>
+                    <th><h5><strong><u>Category:</strong></u></h5></th>
+                    <td><h5><%= inventory.categoryName %></h5></td>
+                </tr>
+                <tr>
+                    <th><h5><strong><u>Priority:</strong></u></h5></th>
+                    <td><h5><%= inventory.priorityName %></h5></td>
+                </tr>
+                <tr>
+                    <th><h5><strong><u>Essay:</strong></u></h5></th>
+                    <td><h5><%= inventory.essaySubmitted %></h5></td>
+                </tr>
+                <tr>
+                    <th><h5><strong><u>Start Time:</strong></u></h5></th>
+                    <td><h5><%= inventory.startTimeClean %></h5></td>
+                </tr>
+                <tr>
+                    <th><h5><strong><u>End Time:</strong></u></h5></th>
+                    <td><h5><%= inventory.endTimeClean %></h5></td>
+                </tr>      
+                <tr>
+                    <th><h5><strong><u>Location:</strong></u></h5></th>
+                    <td><h5><%= inventory.location %></h5></td>
+                </tr> 
+            </table>
+         </div>
+
+        <div class="section" id="controls">
+            <a class="btn-large waves-effect waves-light orange left modal-trigger" href="#edit">
+                <i class="material-icons right">edit</i>
+                Edit
+            </a>
+            <a class="btn-large waves-effect waves-light red right" href="/myapplications">
+                <i class="material-icons right">delete</i>
+                Delete
+            </a>
+        </div>
+
+        <div class="modal" id="edit">
+
+            <div class="modal-content">
+
+                <h2>Edit application:</h2>
+                <form id="updateForm" method="get" action="/application">
+                    <div class="row">
+                        <div class="input-field col s8">
+                            <input type="text" id="titleInput" name="title" class="validate" data-length="32" required value="Harvard">
+                            <label for="titleInput">Application title:</label>
+                        </div>
+                        <div class="input-field col s4">
+                            <select id="categoryInput" name="category" required>
+                                <option value="" disabled>Choose your category</option>
+                                <option value="1" disabled>College</option>
+                                <option value="2" disabled>Internship</option>
+                                <option value="3" disabled>Summer Program</option>
+                                <option value="4" selected>Ivy League</option>
+                               
+                            </select>
+                            <label for="categoryInput">Category:</label>
+                        </div>
+                    </div>
+                    <div class = "row">
+                        <div class="input-field col s8">
+                            <select id="priorityInput" name="priority" required>
+                                <option value="">Choose your priority</option>
+                                <option value="1">Lowest</option>
+                                <option value="2">Medium</option>
+                                <option value="3" selected>Highest</option>
+                              </select>
+                              <label for="priorityInput">Priority:</label>
+                        </div>
+                        <div class = "input-field col s4">
+                            <select id = "statusInput" name="status" required>
+                                <option value="1">Unsubmitted</option>
+                                <option value="2">Submitted</option>
+                            </select>
+                            <label for="statusInput">Status:</label>
+                        </div>
+    
+                        
+                    </div>
+                    <div class = "row">
+
+                        <div class="input-field col s8">
+                            <textarea class="materialize-textarea" id="descriptionInput" name="description">Very Competitive</textarea>
+                            <label for="descriptionInput">Notes:</label>
+                        </div>
+                        <div class="input-field col s4">
+                            <input type="date" id="dueDateInput" name="dueDate" value=2023-01-01>  <!-- Note that the date value format is "yyyy-mm-dd" -->
+                            <label for="dueDateInput">Due Date:</label>
+                        </div>
+                    </div>
+                    <div class = "row">
+
+                        
+                        <div class = "input-field col s4">
+                            <select id = "recommendationsInput" name="recommendations" required>
+                                <option value="0">Need to Request</option>
+                                <option value="1" selected>Requested</option>
+                                <option value="2">Recieved</option>
+                            </select>
+                            <label for="recommendationsInput">Recommendations:</label>
+                        </div>
+                        <div class = "input-field col s4">
+                            <select id = "transcriptInput" name="transcript" required>
+                                <option value="0">Need to Request</option>
+                                <option value="1" selected>Requested</option>
+                                <option value="2">Recieved</option>
+                            </select>
+                            <label for="transcriptInput">Transcript:</label>
+                        </div>
+                        <div class = "input-field col s4">
+                            <select id = "essayInput" name="essay" required>
+                                <option value="0">Unstarted</option>
+                                <option value="1" selected>In Progress</option>
+                                <option value="2">Submitted</option>
+                            </select>
+                            <label for="essayInput">Essay:</label>
+                        </div>
+                        
+    
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button class="btn waves-effect waves-light " type="submit" form="updateForm">
+                        <i class="material-icons right">send</i>
+                        Submit
+                    </button>
+                    <button class="modal-close waves-effect waves-green btn-flat" >Never Mind</button>
+                </div>
+                
+            </div>
+
+        </div>
+        
+    </div>
+    
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!-- initialize Materialize elements -->
+<script> M.AutoInit();</script>
+
+<script src="/scripts/materializeAutoinit.js"></script>
+</tbody>
+</html>
