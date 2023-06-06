@@ -54,7 +54,6 @@ app.use("/applications", requiresAuth(), applicationsRouter);
 let categoriesRouter = require("./routes/categories.js");
 app.use("/categories", requiresAuth(), categoriesRouter);
 
-<<<<<<< HEAD
 app.get('/todo', requiresAuth(), (req, res) => {
     console.log("GET /calendar");
     res.render("todo")
@@ -64,7 +63,6 @@ app.get('/todo', requiresAuth(), (req, res) => {
 app.listen( port, () => {
     console.log(`App server listening on ${ port }. (Go to http://localhost:${ port })` );
 } );
-<<<<<<< HEAD
 
 
 
@@ -76,5 +74,3 @@ allreports - All reports submitted. Allows to edit if yours, sends to managerepo
 if of sufficient permissions
 admin - manage permissions, default user defined in init.
 */
-=======
->>>>>>> 78c01cf3c75a1761ec73903a6ec579aebdc0968b
