@@ -22,7 +22,9 @@
   },
   "homepage": "https://github.com/dangil25/WebApps_Final_Applications#readme",
   "dependencies": {
+    "ejs": "^3.1.9",
     "express": "^4.18.2",
+    "express-openid-connect": "^2.16.0",
     "middleware": "^1.0.0",
     "mysql2": "^3.3.2",
     "npm-run-all": "^4.1.5"

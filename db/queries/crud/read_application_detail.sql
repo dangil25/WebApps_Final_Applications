@@ -1,7 +1,7 @@
 SELECT
-    appplicationId, applicationName,
+    applicationId, applicationName,
     categoryName, applications.categoryId as categoryId,
-    priorityName, applications.priorityId as priorityId,
+    priority,
     essaySubmitted, recRequest, transcriptRequest,
     DATE_FORMAT(dueDate, "%m/%d/%y (%W)") AS dueDateClean,
     DATE_FORMAT(dueDate, "%Y-%m-%d") AS dueDateForms,
@@ -9,6 +9,4 @@ SELECT
 FROM applications 
 JOIN categories
     ON applications.categoryId = categories.categoryId
-JOIN priorities
-    ON applications.priorityId = categories.priorityId
 WHERE applicationId = ?
