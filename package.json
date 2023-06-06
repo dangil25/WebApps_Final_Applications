@@ -1,0 +1,32 @@
+{
+  "name": "webapps_final_applications",
+  "version": "1.0.0",
+  "description": "Helps users keep track of their applications for colleges, summer camps, etc.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "devstart": "nodemon -e js,ejs,sql,env app.js",
+    "dbcreate": "node db/db_create.js",
+    "dbsample": "node db/db_insert_sample_data.js",
+    "dbprint": "node db/db_print.js",
+    "devstart-fresh": "npm-run-all dbcreate dbsample dbprint devstart"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dangil25/WebApps_Final_Applications.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dangil25/WebApps_Final_Applications/issues"
+  },
+  "homepage": "https://github.com/dangil25/WebApps_Final_Applications#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql2": "^3.3.2",
+    "npm-run-all": "^4.1.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
