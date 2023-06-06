@@ -30,9 +30,9 @@ const insert_priority_sql = `
         (?, ?, ?);
 `
 
-db.execute(insert_priority_sql, [0, "Low"])
-db.execute(insert_priority_sql, [1, "Medium"])
-db.execute(insert_priority_sql, [2, "High"])
+db.execute(insert_priority_sql, [0, "Low"]);
+db.execute(insert_priority_sql, [1, "Medium"]);
+db.execute(insert_priority_sql, [2, "High"]);
 
 const insert_applications_sql = `
     INSERT INTO applications
@@ -42,4 +42,6 @@ const insert_applications_sql = `
     VALUS
         (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 `
-db.execute(insert_applications_sql, [])
+db.execute(insert_applications_sql, [0, "Harvard", 0, 2, 0, 1, 1, "2023-01-02", "Very Competetive", 0]);
+db.execute(insert_applications_sql, [0, "Harvard", 0, 2, 0, 1, 1, "2023-01-02", "Very Competetive", 0]);
+db.execute(insert_applications_sql, [0, "Harvard", 0, 2, 0, 1, 1, "2023-01-02", "Very Competetive", 0]);

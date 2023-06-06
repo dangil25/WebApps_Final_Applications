@@ -62,13 +62,16 @@ app.get('/categories', requiresAuth(), (req, res) =>{
     res.render("managecategories");
 });
 
+app.get('/todo', requiresAuth(), (req, res) => {
+    console.log("GET /calendar");
+    res.render("todo")
+});
 
 
 app.listen( port, () => {
     console.log(`App server listening on ${ port }. (Go to http://localhost:${ port })` );
 } );
 
-// Immediately redirect Index to myreports
 
 
 /*

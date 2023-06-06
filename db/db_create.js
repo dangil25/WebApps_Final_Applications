@@ -31,13 +31,17 @@ const create_priority_table_sql = `
 `
 db.execute(create_priority_table_sql);
 
+//essay 0 - unstarted, 1 - in progress, 2 - submitted
+//recRequest 0 - unrequested, 1 - requested, 2 - recieved
+// transcriptRequest 0 - unrequested, 1 - requested, 2 - recieved
+// status 0 - unsubmitted, 1 - submitted
 const create_applications_table_sql = `
     CREATE TABLE applications (
         id INT NOT NULL AUTO_INCREMENT,
         applicationName VARCHAR(45) NOT NULL,
         categoryid INT NOT NULL,
         priorityid INT NOT NULL,
-        essaySubmitted INT NULL,
+        essayStatus INT NULL,
         recRequest INT NULL,
         transcriptRequest INT NULL,
         dueDate DATE NULL,
