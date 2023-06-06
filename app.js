@@ -1,15 +1,17 @@
+const DEBUG = true;
 
+const db = require('./db/db_connection');
 const express = require( "express" );
+const app = express();
+const port = 8080;
 const logger = require("morgan");
-const path = require("path");
-const fs = require("fs");
 const { auth } = require('express-openid-connect');
 const { requiresAuth } = require('express-openid-connect');
 const dotenv = require('dotenv');
 dotenv.config();
-const db = require('./db/db_connection');
-const app = express();
-const port = 8080;
+const path = require("path");
+const fs = require("fs");
+
 
 app.set( "views",  path.join(__dirname , "views"));
 app.set( "view engine", "ejs" );
@@ -42,40 +44,20 @@ app.get('/profile', (req, res) => {
     res.send(JSON.stringify(req.oidc.user));
 });
 
-app.get('/', (req, res) =>{
-    console.log("GET /");
+app.get('/', (req, res) => {
     res.render("index");
 });
 
-app.get('/myapplications', requiresAuth(), (req, res) =>{
-    console.log("GET /myapplications");
-    res.render("myapplications");
-});
+let applicationsRouter = require("./routes/applications.js");
+app.use("/applications", requiresAuth(), applicationsRouter);
 
-app.get('/application', requiresAuth(), (req, res) =>{
-    console.log("GET /application");
-    res.render("application");
-});
+let categoriesRouter = require("./routes/categories.js");
+app.use("/categories", requiresAuth(), categoriesRouter);
 
-app.get('/categories', requiresAuth(), (req, res) =>{
-    console.log("GET /categories");
-    res.render("managecategories");
-});
-
+let prioritiesRouter = require("./routes/priorities.js");
+app.use("/priorities", requiresAuth(), prioritiesRouter);
 
 
 app.listen( port, () => {
     console.log(`App server listening on ${ port }. (Go to http://localhost:${ port })` );
 } );
-
-// Immediately redirect Index to myreports
-
-
-/*
-Structure:
-Myreports - homepage, lists all your reports, and resolved/unresolved status
-report - specific report. Allows you to edit if it is yours.
-allreports - All reports submitted. Allows to edit if yours, sends to managereport 
-if of sufficient permissions
-admin - manage permissions, default user defined in init.
-*/
