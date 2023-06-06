@@ -2,7 +2,7 @@ CREATE TABLE applications (
     applicationId INT NOT NULL AUTO_INCREMENT,
     applicationName VARCHAR(45) NOT NULL,
     categoryId INT NOT NULL,
-    priorityId INT NOT NULL,
+    priority INT NOT NULL,
     essaySubmitted INT NULL,
     recRequest INT NULL,
     transcriptRequest INT NULL,
@@ -16,12 +16,4 @@ CREATE TABLE applications (
         FOREIGN KEY (categoryId)
         REFERENCES categories (categoryId)
         ON DELETE RESTRICT
-        ON UPDATE CASCADE
-    ,
-    INDEX applicationPriority_idx (priorityId ASC),
-    CONSTRAINT applicationPriority
-        FOREIGN KEY (priorityid)
-        REFERENCES priorities (priorityId)
-        ON DELETE RESTRICT
-        ON UPDATE CASCADE
-);
+        ON UPDATE CASCADE);

@@ -18,19 +18,6 @@ db.execute(select_categories_sql,
 );
 
 
-const select_priorities_sql = fs.readFileSync(path.join(__dirname, "queries", "init", "select_priorities.sql"), {encoding: "UTF-8"});
-
-db.execute(select_priorities_sql, 
-    (error, results) => {
-        if (error) 
-            throw error;
-
-        console.log("Table 'priorities' contents:")
-        console.log(results);
-    }
-);
-
-
 const select_applications_sql = fs.readFileSync(path.join(__dirname, "queries", "init", "select_applications.sql"), {encoding: "UTF-8"});
 
 db.execute(select_applications_sql, 

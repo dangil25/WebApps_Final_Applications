@@ -16,9 +16,6 @@ db.execute(drop_priorities_table_sql);
 const create_categories_table_sql = fs.readFileSync(path.join(__dirname, "queries", "init", "create_categories_table.sql"), {encoding: "UTF-8"});
 db.execute(create_categories_table_sql);
 
-const create_priorities_table_sql = fs.readFileSync(path.join(__dirname, "queries", "init", "create_priorities_table.sql"), {encoding: "UTF-8"});
-db.execute(create_priorities_table_sql);
-
 const create_applications_table_sql = fs.readFileSync(path.join(__dirname, "queries", "init", "create_applications_table.sql"), {encoding: "UTF-8"});
 db.execute(create_applications_table_sql);
 
