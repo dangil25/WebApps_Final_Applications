@@ -14,10 +14,10 @@ db.execute(delete_categories_table_sql);
 
 const insert_category_sql = fs.readFileSync(path.join(__dirname, "queries", "init", "insert_category.sql"), {encoding: "UTF-8"});
 
-db.execute(insert_category_sql, [1, 'College']);
-db.execute(insert_category_sql, [2, 'Internship']);
-db.execute(insert_category_sql, [3, 'Summer Program']);
-db.execute(insert_category_sql, [4, 'IVY LEAGUE']);
+db.execute(insert_category_sql, [1, 'College', 'dangil25@bergen.org']);
+db.execute(insert_category_sql, [2, 'Internship', 'dangil25@bergen.org']);
+db.execute(insert_category_sql, [3, 'Summer Program', 'dangil25@bergen.org']);
+db.execute(insert_category_sql, [4, 'IVY LEAGUE', 'dangil25@bergen.org']);
 
 
 const insert_application_sql = fs.readFileSync(path.join(__dirname, "queries", "init", "insert_application.sql"), {encoding: "UTF-8"});
@@ -44,7 +44,7 @@ transcriptRequest: 1 --> Requested
 dueDate: '2023-01-01'
 status: 0 --> Unsubmitted
 */
-db.execute(insert_application_sql, ['Harvard', 4, 1, 2, 0, 1, '2023-01-01', 'I need to get in plspls', 0]);
+db.execute(insert_application_sql, ['Harvard', 4, 1, 2, 0, 1, '2023-01-01', 'I need to get in plspls', 'dangil25@bergen.org', 0]);
 
 
 
@@ -56,7 +56,7 @@ transcriptRequest: 1 --> Requested
 dueDate: '2023-03-31'
 status: 1 --> Submitted
 */
-db.execute(insert_application_sql, ['Emory', 1, 3, 2, 2, 1, '2023-03-31', 'slight reach, hopefully i make it', 1]);
+db.execute(insert_application_sql, ['Emory', 1, 0, 2, 2, 1, '2023-03-31', 'slight reach, hopefully i make it', 'dangil25@bergen.org', 1]);
 
 
 /*categoryId: 2 --> Internship
@@ -67,7 +67,7 @@ transcriptRequest: null
 dueDate: '2023-08-15'
 status: 0 --> Unsubmitted
 */
-db.execute(insert_application_sql, ['Quantum Physics Internship', 2, 4, 1, null, null, '2023-08-15', 'prolly not getting in, not that important, but still try', 0]);
+db.execute(insert_application_sql, ['Quantum Physics Internship', 2, 2, 1, null, null, '2023-08-15', 'prolly not getting in, not that important, but still try', 'dangil25@bergen.org', 0]);
 
 
 /*categoryId: 3 --> Summer Camp
@@ -78,6 +78,6 @@ transcriptRequest: 2 --> submitted
 dueDate: null
 status: 1 --> Submitted
 */
-db.execute(insert_application_sql, ['Web App Camp', 3, 2, null, 1, 2, null, 'no essay, just waiting on rec, rly good camp', 1]);
+db.execute(insert_application_sql, ['Web App Camp', 3, 1, null, 1, 2, null, 'no essay, just waiting on rec, rly good camp', 'dangil25@bergen.org', 1]);
 
 db.end();

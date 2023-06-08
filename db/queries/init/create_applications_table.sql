@@ -8,6 +8,7 @@ CREATE TABLE applications (
     transcriptRequest INT NULL,
     dueDate DATE NULL,
     notes VARCHAR(150) NULL,
+    userId VARCHAR(45) NOT NULL,
     status INT NULL,
     PRIMARY KEY (applicationId),
 

@@ -9,4 +9,4 @@ SELECT
 FROM applications 
 JOIN categories
     ON applications.categoryId = categories.categoryId
-WHERE applicationId = ?
+WHERE applicationId = ? AND applications.userId = ?

@@ -16,10 +16,12 @@
     <link rel="stylesheet" href="/stylesheets/stuffStyle.css">
 
 </head>
-
+<% let array = [];
+    for(let i = 0; i < used.length; i++) {
+        array.push(used[i].categoryId);
+} %>
 <body>
     <%- include('partials/navbar') %>
-
     <!-- Actual page content! -->
     <div class="container">
         <div class="section" id="list">
@@ -32,43 +34,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th>College</th>
-                        <td>
-                            <a class="btn-small waves-effect waves-light red" href="/categories">
-                                <i class="material-icons right">delete</i>
-                                Delete
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Internship</th>
-                        <td>
-                            <a class="btn-small waves-effect waves-light red" href="/categories">
-                                <i class="material-icons right">delete</i>
-                                Delete
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Summer Program</th>
-                        <td>
-                            <a class="btn-small waves-effect waves-light red" href="/categories">
-                                <i class="material-icons right">delete</i>
-                                Delete
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Ivy League</th>
-                        <td>
-                            <a class="btn-small waves-effect waves-light red" href="/categories">
-                                <i class="material-icons right">delete</i>
-                                Delete
-                            </a>
-                        </td>
-                    </tr>
-
+                    <% for (let i = 0; i < categories.length; i++ ){%>
+                        <%if (categories[i].categoryId >= 0){%>
+                            <tr>
+                                <td> <%= categories[i].categoryName %></td>
+                                <td>
+                                    <%if (array.indexOf(categories[i].categoryId) == -1){%>
+                                        <a class = "btn-small waves-effect waves-light red" 
+                                            href = "/categories/<%=categories[i].categoryId %> + /delete">
+                                            <i class = "material-icons right">delete</i>Delete
+                                        </a>
+                                    <% } else{ %>
+                                        <a class = "btn-small waves-effect waves-light grey" 
+                                            onclick="M.toast({html: 'Category is in use!', displayLength: 1000})">
+                                            <i class = "material-icons right">delete</i>Delete
+                                        </a>
+                                    <% } %>
+                                </td>
+                            </tr>
+                        <% } %>
+                    <% } %>
                 </tbody>
 
             </table>
