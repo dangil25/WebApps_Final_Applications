@@ -54,14 +54,14 @@
 
         <div class="section" id="addApplication">
             <h5>Add an application:</h5>
-            <form id="addForm" method="get" action="/application">
+            <form id="addForm" method="post" action="/applications">
                 <div class="row">
                     <div class="input-field col s6">
-                        <input type="text" name="appName" id="appNameInput" class="validate" data-length="32" placeholder = "Application Title:" required>
+                        <input type="text" name="applicationName" id="appNameInput" class="validate" data-length="32" placeholder = "Application Title:" required>
                         <label for="appNameInput">Title:</label>
                     </div>
                     <div class="input-field col s6">
-                        <select id="categoryInput" name="category" required>
+                        <select id="categoryId" name="categoryId" required>
                             <option value="" disabled selected>Choose your category</option>
                             <option value="1" >College</option>
                             <option value="2" >Internship</option>
@@ -81,7 +81,7 @@
                     <div class="input-field col s6">
                         Due Date:
                         <div class="input-field inline">
-                            <input type="date" name="appDate" id="dateInput" class="validate" data-length="32">
+                            <input type="date" name="dueDate" id="dateInput" class="validate" data-length="32">
                         </div>
                     </div>
                     <div class="input-field col s6">

@@ -3,6 +3,7 @@ const express = require('express');
 const db = require('../db/db_connection.js');
 const fs = require("fs");
 const path = require("path");
+const { create } = require('domain');
 
 let applicationsRouter = express.Router();
 
@@ -41,6 +42,30 @@ applicationsRouter.get("/:id", ( req, res ) => {
     });    
 });
 
+const create_assignment_sql = fs.readFileSync(path.join(__dirname, "..", 
+    "db", "queries", "crud", "insert_application.sql"),
+    {encoding : "UTF-8"});
+    
+applicationsRouter.post("/", (req, res) => {
+    db.execute(create_assignment_sql, [req.body.applicationName, req.body.categoryId, req.body.priority, 0, 0, 0,
+    req.body.dueDate, req.body.notes, req.oidc.user.email, 0], (error, results) => {
+        if (DEBUG)
+            console.log(error ? error : results);
+        if (error)
+            res.status(500).send(error); //Internal Server Error
+        else {
+            //results.insertId has the primary key (assignmentId) of the newly inserted row.
+            res.redirect(`/applications/${results.insertId}`);
+        }
+    });
+});
+
+// applicationsRouter.post("/:id")
+// const insert_application_sql = fs.readFileSync(path.join(__dirname, "..", "db", "queries", "crud", "insert_application.sql"), {encoding: "UTF-8"});
+// applicationsRouter.post(insert_application_sql, [req.body.applicationName, req.body.category, req.body.priority, 0, 0, 0, 
+//     req.body.dueDate, req.body.notes, req.oidc.user.email, 0], (req, res) => {
+
+// });
 
 
 module.exports = applicationsRouter;
