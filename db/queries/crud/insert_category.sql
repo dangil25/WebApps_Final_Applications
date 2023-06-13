@@ -1,4 +1,4 @@
 INSERT INTO categories 
-    (categoryId, categoryName, userId) 
+    (categoryName, userId) 
 VALUES 
-    (?, ?, ?);
+    (?, ?);
