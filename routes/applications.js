@@ -60,7 +60,22 @@ applicationsRouter.post("/", (req, res) => {
     });
 });
 
-// applicationsRouter.post("/:id")
+const update_application_sql = fs.readFileSync(path.join(__dirname, "..", 
+"db", "queries", "crud", "update_application.sql"),
+{encoding : "UTF-8"});
+
+applicationsRouter.post("/:id", (req, res) => {
+    db.execute(update_application_sql, [req.body.title, req.body.category, req.body.priority, req.body.essay, 
+    req.body.recommendations, req.body.transcript, req.body.dueDate, req.body.notes, req.body.status, req.params.id, req.oidc.user.email], (error, results)=> {
+        if (DEBUG)
+            console.log(error ? error : results);
+        if (error)
+            res.status(500).send(error); //Internal Server Error
+        else {
+            res.redirect(`/applications/${req.params.id}`);
+        }
+    })
+});
 // const insert_application_sql = fs.readFileSync(path.join(__dirname, "..", "db", "queries", "crud", "insert_application.sql"), {encoding: "UTF-8"});
 // applicationsRouter.post(insert_application_sql, [req.body.applicationName, req.body.category, req.body.priority, 0, 0, 0, 
 //     req.body.dueDate, req.body.notes, req.oidc.user.email, 0], (req, res) => {
