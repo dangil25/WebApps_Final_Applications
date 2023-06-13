@@ -27,5 +27,11 @@ categoriesRouter.get('/', (req, res) =>{
     });
 });
 
+const insert_category_sql = fs.readFileSync(path.join(__dirname, "..", "db", "queries", "crud", "read_used_categories.sql"), {encoding: "UTF-8"});
+
+categoriesRouter.post('/', (req, res) => {
+
+});
+
 
 module.exports = categoriesRouter; 
