@@ -11,12 +11,15 @@ const read_applications_all_sql = fs.readFileSync(path.join(__dirname, "..", "db
 
 applicationsRouter.get("/", ( req, res ) => {
     db.execute(read_applications_all_sql, [req.oidc.user.email], (error, results) => {
+        console.log(results[0])
         if (DEBUG)
             console.log(error ? error : results);
         if (error)
             res.status(500).send(error); //Internal Server Error
         else {
-            res.render('applications', results);
+            let data = {results: results[0]};
+            
+            res.render('applications', data);
         }
     });    
 });
