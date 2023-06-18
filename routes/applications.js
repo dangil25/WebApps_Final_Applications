@@ -83,7 +83,7 @@ const delete_application_sql = fs.readFileSync(path.join(__dirname, "..",
 "db", "queries", "crud", "delete_application.sql"),
 {encoding : "UTF-8"});
 
-applicationsRouter.get("/delete/:id", (req, res) => {
+applicationsRouter.get("/:id/delete", (req, res) => {
     db.execute(delete_application_sql, [req.params.id, req.oidc.user.email], (error, results) => {
         if (DEBUG)
             console.log(error ? error : results);
