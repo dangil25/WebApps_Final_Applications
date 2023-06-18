@@ -45,7 +45,7 @@
                         <td><%= results[i].notes %></td>
                         <td><%= submitted[results[i].status] %></td>
                         <td>
-                            <a class="btn-small waves-effect waves-light" href=<%= "/tasks/" + results[i].applicationId %> >
+                            <a class="btn-small waves-effect waves-light" href=<%= "/applications/" + results[i].applicationId %> >
                                 <i class="material-icons right">edit</i>Info/Edit</a>
                             <a class="btn-small waves-effect waves-light red" onclick="M.toast({html: 'Application deleted!'})" href="/applications/<%= results[i].taskId %>/delete">
                                 <i class="material-icons right">delete</i>Delete</a>
