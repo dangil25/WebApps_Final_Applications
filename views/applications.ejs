@@ -65,10 +65,9 @@
                     <div class="input-field col s6">
                         <select id="categoryId" name="categoryId" required>
                             <option value="" disabled selected>Choose your category</option>
-                            <option value="1" >College</option>
-                            <option value="2" >Internship</option>
-                            <option value="3" >Summer Program</option>
-                            <option value="4" >Ivy League</option>
+                            <% for (let i = 0; i < categories.length; i++) { %>
+                                <option value=<%=categories[i].categoryId%> ><%= categories[i].categoryName %></option>
+                            <% } %>
                         </select>
                         <label for="categoryInput">Category:</label>
                     </div>
