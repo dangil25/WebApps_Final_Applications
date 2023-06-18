@@ -27,7 +27,6 @@
                         <th>Title</th>
                         <th>Category</th>
                         <th>Due Date</th>
-                        <th>Notes</th>
                         <th>Final Status</th>
                         <td></td>
                     </tr>
@@ -41,8 +40,7 @@
                         <td><%= priorities[results[i].priority] %></td>
                         <td><%= results[i].applicationName %></td>
                         <td><%= results[i].categoryName %></td>
-                        <td><%= results[i].dueDateClean %></td>
-                        <td><%= results[i].notes %></td>
+                        <td><%= results[i].dueDateFormatted %></td>
                         <td><%= submitted[results[i].status] %></td>
                         <td>
                             <a class="btn-small waves-effect waves-light" href=<%= "/tasks/" + results[i].applicationId %> >
