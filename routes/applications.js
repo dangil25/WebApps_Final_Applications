@@ -75,7 +75,24 @@ applicationsRouter.post("/:id", (req, res) => {
             res.redirect(`/applications/${req.params.id}`);
         }
     })
+}); 
+
+const delete_application_sql = fs.readFileSync(path.join(__dirname, "..", 
+"db", "queries", "crud", "delete_application.sql"),
+{encoding : "UTF-8"});
+
+applicationsRouter.get("/delete/:id", (req, res) => {
+    db.execute(delete_application_sql, [req.params.id, req.oidc.user.email], (error, results) => {
+        if (DEBUG)
+            console.log(error ? error : results);
+        if (error)
+            res.status(500).send(error); //Internal Server Error
+        else {
+            res.redirect(`/applications`);
+        }
+    })
 });
+
 // const insert_application_sql = fs.readFileSync(path.join(__dirname, "..", "db", "queries", "crud", "insert_application.sql"), {encoding: "UTF-8"});
 // applicationsRouter.post(insert_application_sql, [req.body.applicationName, req.body.category, req.body.priority, 0, 0, 0, 
 //     req.body.dueDate, req.body.notes, req.oidc.user.email, 0], (req, res) => {

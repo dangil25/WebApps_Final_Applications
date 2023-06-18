@@ -31,7 +31,7 @@
     <div class = "container">
         <div class="section flow-text col s6" id="header">
             <h1><%= inventory.applicationName %></h1>
-            <form id="updateForm" method="post" action="/applications">
+            <form id="updateForm" method="post" action="/applications/<%=inventory.applicationId%>">
                 <div class="row">
                     
                     <div class="input-field col s8">
@@ -89,7 +89,7 @@
                 <div class = "row">
 
                     <div class="input-field col s8">
-                        <textarea class="materialize-textarea" id="descriptionInput" name="description"><%= inventory.notes%></textarea>
+                        <textarea class="materialize-textarea" id="descriptionInput" name="notes"><%= inventory.notes%></textarea>
                         <label for="descriptionInput">Notes:</label>
                     </div>
                     <div class="input-field col s4">
@@ -104,7 +104,7 @@
                     <div class = "input-field col s4">
                         <select id = "recommendationsInput" name="recommendations" required>
                             <% for (let i = 0; i < 3; i++) { %>
-                                <% if (inventory.recommendations == i){%>
+                                <% if (inventory.recRequest == i){%>
                                     <option selected value = <%= i %>><%= requests[i] %> </option>
                                 <% } else {%>
                                     <option value = <%= i %>><%= requests[i] %> </option>
@@ -117,7 +117,7 @@
                     <div class = "input-field col s4">
                         <select id = "transcriptInput" name="transcript" required>
                             <% for (let i = 0; i < 3; i++) { %>
-                                <% if (inventory.transcript == i){%>
+                                <% if (inventory.transcriptRequest == i){%>
                                     <option selected value = <%= i %>><%= requests[i] %> </option>
                                 <% } else {%>
                                     <option value = <%= i %>><%= requests[i] %> </option>
@@ -130,7 +130,7 @@
                     <div class = "input-field col s4">
                         <select id = "essayInput" name="essay" required>
                             <% for (let i = 0; i < 3; i++) { %>
-                                <% if (inventory.essay == i){%>
+                                <% if (inventory.essaySubmitted == i){%>
                                     <option selected value = <%= i %>><%= essayStatus[i] %> </option>
                                 <% } else {%>
                                     <option value = <%= i %>><%= essayStatus[i] %> </option>
@@ -151,7 +151,7 @@
                 Submit
             </button>
             <a class="btn-large waves-effect waves-green btn-flat" href = "/applications/<%= inventory.applicationId%>">Never Mind</a>
-            <a class="btn-large waves-effect waves-light red right" href="/applications">
+            <a class="btn-large waves-effect waves-light red right" href="/applications/delete/<%= inventory.applicationId%>">
                 <i class="material-icons right">delete</i>
                 Delete
             </a>
