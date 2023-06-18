@@ -10,14 +10,13 @@ let applicationsRouter = express.Router();
 const read_applications_all_sql = fs.readFileSync(path.join(__dirname, "..", "db", "queries", "crud", "read_applications_all.sql"), {encoding: "UTF-8"});
 
 applicationsRouter.get("/", ( req, res ) => {
-    db.execute(read_applications_all_sql, [req.oidc.user.email], (error, results) => {
-        console.log(results[0])
+    db.execute(read_applications_all_sql, [req.oidc.user.email], (error, result) => {
         if (DEBUG)
-            console.log(error ? error : results);
+            console.log(error ? error : result);
         if (error)
             res.status(500).send(error); //Internal Server Error
         else {
-            let data = {results: results[0]};
+            let data = {results: result};
             
             res.render('applications', data);
         }
