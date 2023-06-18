@@ -7,4 +7,6 @@ SELECT
 FROM applications 
 JOIN categories
     ON applications.categoryId = categories.categoryId
+WHERE
+    applications.userId = ?
 ORDER BY applications.applicationId DESC;
