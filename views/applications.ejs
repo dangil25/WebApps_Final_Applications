@@ -15,6 +15,9 @@
     <%- include ('partials/navbar')%>
 
     <div class = "container">
+        <% let priorities = ["Lowest", "Medium", "Highest"]; %>
+        <% let submitted = ["Unsubmitted", "Submitted"]; %>
+
         <div class = "section" id = "list">
             <h3>Your Applications:</h3>
             <table>
@@ -29,25 +32,26 @@
                         <td></td>
                     </tr>
                 </thead>
+
+                
+
                 <tbody>
+                    <% for (let i = 0; i < results.length; i++) { %> 
                     <tr>
-                        <td>Highest</td>
-                        <td>Harvard</td>
-                        <td>Ivy League</td>
-                        <td>1/1/2023</td>
-                        <td>Very Competetive</td>
-                        <td>Unsubmitted</td>
+                        <td><%= priorities[results[i].priority] %></td>
+                        <td><%= results[i].applicationName %></td>
+                        <td><%= results[i].categoryName %></td>
+                        <td><%= results[i].dueDateClean %></td>
+                        <td><%= results[i].notes %></td>
+                        <td><%= submitted[results[i].status] %></td>
                         <td>
-                            <a class="btn-small waves-effect waves-light" href="/applications/1">
-                                <i class="material-icons right">edit</i>
-                                Info/Edit
-                            </a>
-                            <a class="btn-small waves-effect waves-light red" href="/applications">
-                                <i class="material-icons right">delete</i>
-                                Delete
-                            </a>
-                        </td>
+                            <a class="btn-small waves-effect waves-light" href=<%= "/tasks/" + results[i].applicationId %> >
+                                <i class="material-icons right">edit</i>Info/Edit</a>
+                            <a class="btn-small waves-effect waves-light red" onclick="M.toast({html: 'Application deleted!'})" href="/applications/<%= results[i].taskId %>/delete">
+                                <i class="material-icons right">delete</i>Delete</a>
+                        </td>    
                     </tr>
+                    <% } %>
                 </tbody>
             </table>
         </div>
