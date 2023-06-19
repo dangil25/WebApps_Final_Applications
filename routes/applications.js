@@ -16,9 +16,10 @@ applicationsRouter.get("/", ( req, res ) => {
         if (error)
             res.status(500).send(error); //Internal Server Error
         else {
-            let data = {results: result};
-            
-            res.render('applications', data);
+            db.execute(read_categories_all_sql, [req.oidc.user.email], (req, cat) => {
+                let data = {results: result, categories: cat};
+                res.render('applications', data);
+            });
         }
     });    
 });

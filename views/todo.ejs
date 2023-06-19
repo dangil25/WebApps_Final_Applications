@@ -12,11 +12,71 @@
 
 </head>
 <tbody>
-    <%- include ('partials/navbar')%>
+    <%- include ('partials/navbar')%>   
 
     <div class = "container">
-        <h3>To do list (unfinished applications):</h3>
+        <h3>Application Search:</h3>
         <div class="divider"></div>
+        
+        <form id="updateForm" method="post">
+            <div class = row>
+                
+                <div class="input-field col s3">
+                    <% 
+                    let priorities = ["Any Priority", "Lowest", "Medium", "Highest"]; 
+                    let prioritiesId = [-1, 0, 1, 2];
+                    %>
+                    
+                    <select id="priorityInput" name="priority" required>
+                            <% for (let i = 0; i < priorities.length; i++) { %>
+                                <% if (prioritiesId[i] == preferences.priorityType){%>
+                                    <option selected value = <%= prioritiesId[i] %>><%= priorities[i] %> </option>
+                                <% } else {%>
+                                    <option value = <%= prioritiesId[i] %>><%= priorities[i] %> </option>
+                                <% } %>
+                            <% } %>
+                    </select>
+                    <label for="priorityInput">Priority:</label>
+
+                </div>  
+                <div class="input-field col s3">
+                    <%
+                    let dates = ["Past Applications", "Future Applications"];
+                    %>
+                    <select id="dateInput" name="date" required>
+                        <% for (let i = 0; i < dates.length; i++){ %>
+                            <% if (i == preferences.dateType){%>
+                                <option selected value = <%= i %>><%= dates[i] %> </option>
+                            <% } else {%>
+                                <option value = <%= i %>><%= dates[i] %> </option>
+                            <% } %>
+                        <% } %>
+                    </select>
+                    <label for="dateInput">Date Due:</label>
+                </div>
+                <div class="input-field col s3">
+                    <%
+                    let statuses = ["Unsubmitted", "Submitted"];
+                    %>
+                    <select id="statusInput" name="status" required>
+                        <% for (let i = 0; i < statuses.length; i++){ %>
+                            <% if (i == preferences.statusType){%>
+                                <option selected value = <%= i %>><%= statuses[i] %> </option>
+                            <% } else {%>
+                                <option value = <%= i %>><%= statuses[i] %> </option>
+                            <% } %>
+                        <% } %>
+                    </select>
+                    <label for="statusInput">Status:</label>
+                </div>
+                <button class="btn-large waves-effect waves-light " type="submit" form="updateForm">
+                    <i class="material-icons right">send</i>
+                    Update Filters
+                </button>
+                
+            </div>
+        </form>
+        
         <div class="section">
             <h5>Harvard</h5>
             <ul>
@@ -26,26 +86,7 @@
                 <li>Really need to get into this pls</li>
             </ul>
         </div>
-        <div class="divider"></div>
-        <div class="section">
-            <h5>RSI Summer Camp</h5>
-            <ul>
-                <li>Essay is done</li>
-                <li>Transcript is done</li>
-                <li>Recommendations still missing</li>
-                <li>no way im getting in but worth a shot lol</li>
-            </ul>
-        </div>
-        <div class="divider"></div>
-        <div class="section">
-            <h5>Awesome Math</h5>
-            <ul>
-                <li>Essay needs to be completed</li>
-                <li>Transcript needs to be sent</li>
-                <li>Recommendations still missing</li>
-                <li>not important, dont stress</li>
-            </ul>
-        </div>
+        
     </div>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

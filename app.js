@@ -54,11 +54,8 @@ app.use("/applications", requiresAuth(), applicationsRouter);
 let categoriesRouter = require("./routes/categories.js");
 app.use("/categories", requiresAuth(), categoriesRouter);
 
-app.get('/todo', requiresAuth(), (req, res) => {
-    console.log("GET /calendar");
-    res.render("todo")
-});
-
+let todoRouter = require("./routes/todo.js");
+app.use("/todo", requiresAuth(), todoRouter);
 
 app.listen( port, () => {
     console.log(`App server listening on ${ port }. (Go to http://localhost:${ port })` );
