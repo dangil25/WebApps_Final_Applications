@@ -15,6 +15,10 @@
     <%- include ('partials/navbar')%>   
 
     <div class = "container">
+        <% let recs = ["Need to request", "Requested", "Received"]; %>
+        <% let transcripts = ["Need to request", "Requested", "Received"]; %>
+        <% let essays = ["Unstarted", "Started", "Submitted"]; %>
+
         <h3>Application Search:</h3>
         <div class="divider"></div>
         
@@ -76,15 +80,44 @@
                 
             </div>
         </form>
+
         
-        <div class="section">
-            <h5>Harvard</h5>
-            <ul>
-                <li>Essay needs to be completed</li>
-                <li>Transcript is done</li>
-                <li>Recommendations still missing</li>
-                <li>Really need to get into this pls</li>
-            </ul>
+        <div class="section flow-text" id="header">
+            <h3>Your Applications:</h3>
+            
+            <table class="responsive-table">
+                <% for (let i = 0; i < inventory.length; i++) { %> 
+                    <h1><%= inventory[i].applicationName %></h1>
+                    <tr>
+                        <th><h5><strong><u>Priority:</strong></u></h5></th>
+                        <td><h5><%= priorities[inventory[i].priority] %></h5></td>
+                    </tr>
+                    <tr>
+                        <th><h5><strong><u>Category:</strong></u></h5></th>
+                        <td><h5><%= inventory[i].categoryName %></h5></td>
+                    </tr>
+                    <tr>
+                        <th><h5><strong><u>Recommendations:</strong></u></h5></th>
+                        <td><h5><%= recs[inventory[i].recRequest] %></h5></td>
+                    </tr>
+                    <tr>
+                        <th><h5><strong><u>Transcripts:</strong></u></h5></th>
+                        <td><h5><%= transcripts[inventory[i].transcriptRequest] %></h5></td>
+                    </tr>
+                    <tr>
+                        <th><h5><strong><u>Essays:</strong></u></h5></th>
+                        <td><h5><%= essays[inventory[i].essaySubmitted] %></h5></td>
+                    </tr>      
+                    <tr>
+                        <th><h5><strong><u>Notes:</strong></u></h5></th>
+                        <td><h5><%= inventory[i].notes %></h5></td>
+                    </tr>
+                    <tr>
+                        <th><h5><strong><u>Due Date:</strong></u></h5></th>
+                        <td><h5><%= inventory[i].dueDateFormatted %></h5></td>
+                    </tr>
+                <% } %> 
+            </table>
         </div>
         
     </div>
