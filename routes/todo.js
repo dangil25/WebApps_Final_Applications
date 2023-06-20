@@ -12,7 +12,7 @@ const todo_order_sql = fs.readFileSync(path.join(__dirname, "..",
 {encoding : "UTF-8"});
 
 todoRouter.get("/", (req, res) => {
-    db.execute(todo_order_sql, [-1, 1, 0, req.oidc.user.email], (error, results) => {
+    db.execute(todo_order_sql, [-1, -1, 1, 1, 1, 0, req.oidc.user.email], (error, results) => {
         if (DEBUG)
             console.log(error ? error : results);
         if (error)
@@ -23,9 +23,19 @@ todoRouter.get("/", (req, res) => {
         }
     })
 });
+// We know passing same value is stupid, we tried to figure out variables, and code worked in workbench but not in sql files on here:
+/*
+SET @priorities = -1;
+SET @dater = 2;
 
+SELECT applicationName, DATE_FORMAT(dueDate, "%m/%d/%y (%W)") AS dueDateFormatted, categoryName, essaySubmitted, recRequest, transcriptRequest, notes
+FROM applications
+JOIN categories on categories.categoryId = applications.categoryId
+WHERE (-1 = @priorities OR priority = @priorities) and ((0 = @dater and dueDate < CURRENT_TIMESTAMP) or (1 = @dater and dueDate > CURRENT_TIMESTAMP) or (2 = @dater)) and status = 0 and applications.userId = "dangil25@bergen.org"
+ORDER BY priority desc, dueDate;
+*/
 todoRouter.get("/:prior/:date/:status", (req, res) => {
-    db.execute(todo_order_sql, [req.params.prior, req.params.date, req.params.status, req.oidc.user.email], (error, results) => {
+    db.execute(todo_order_sql, [req.params.prior, req.params.prior, req.params.date, req.params.date, req.params.date, req.params.status, req.oidc.user.email], (error, results) => {
         console.log(results);
         if (DEBUG)
             console.log(error ? error : results);
