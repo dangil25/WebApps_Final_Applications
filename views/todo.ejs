@@ -45,7 +45,7 @@
                 </div>  
                 <div class="input-field col s3">
                     <%
-                    let dates = ["Past Applications", "Future Applications", "All Applications"];
+                    let dates = ["Past-Due Applications", "Future Applications", "All Applications"];
                     %>
                     <select id="dateInput" name="date" required>
                         <% for (let i = 0; i < dates.length; i++){ %>
@@ -84,40 +84,18 @@
         
         <div class="section flow-text" id="header">
             <h3>Your Applications:</h3>
-            
-            <table class="responsive-table">
-                <% for (let i = 0; i < inventory.length; i++) { %> 
-                    <h1><%= inventory[i].applicationName %></h1>
-                    <tr>
-                        <th><h5><strong><u>Priority:</strong></u></h5></th>
-                        <td><h5><%= priorities[inventory[i].priority] %></h5></td>
-                    </tr>
-                    <tr>
-                        <th><h5><strong><u>Category:</strong></u></h5></th>
-                        <td><h5><%= inventory[i].categoryName %></h5></td>
-                    </tr>
-                    <tr>
-                        <th><h5><strong><u>Recommendations:</strong></u></h5></th>
-                        <td><h5><%= recs[inventory[i].recRequest] %></h5></td>
-                    </tr>
-                    <tr>
-                        <th><h5><strong><u>Transcripts:</strong></u></h5></th>
-                        <td><h5><%= transcripts[inventory[i].transcriptRequest] %></h5></td>
-                    </tr>
-                    <tr>
-                        <th><h5><strong><u>Essays:</strong></u></h5></th>
-                        <td><h5><%= essays[inventory[i].essaySubmitted] %></h5></td>
-                    </tr>      
-                    <tr>
-                        <th><h5><strong><u>Notes:</strong></u></h5></th>
-                        <td><h5><%= inventory[i].notes %></h5></td>
-                    </tr>
-                    <tr>
-                        <th><h5><strong><u>Due Date:</strong></u></h5></th>
-                        <td><h5><%= inventory[i].dueDateFormatted %></h5></td>
-                    </tr>
-                <% } %> 
-            </table>
+            <div class = "divider"></div>
+            <% let requests = ["Need to Request", "Requested", "Recieved"]; %>
+            <% let essayStatus = ["Unstarted", "In Progress", "Submitted"] %>
+            <% let prioritie = ["Low", "Medium", "High"] %>
+            <% for (let i = 0; i < inventory.length; i++) { %> 
+                <h5><%= inventory[i].applicationName %> (<%= prioritie[inventory[i].priority] %>)</h5>
+                <h6><%= inventory[i].categoryName %></h6>
+                <h6><%= inventory[i].dueDateFormatted %></h6>
+                <h6>Recommendation: <%=requests[inventory[i].recRequest] %> / Transcript: <%= requests[inventory[i].transcriptRequest] %> / Essays: <%= essayStatus[inventory[i].essaySubmitted] %></h6>             
+                <h6><%= inventory[i].notes %></h6>
+                <div class = "divider"></div>
+            <% } %> 
         </div>
         
     </div>
